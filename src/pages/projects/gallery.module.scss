@@ -88,13 +88,21 @@
 .filter {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.8vw;
+  gap: 1vw;
   padding-bottom: 4vw;
   .filterButton {
-    border: 1px solid rgba(40, 40, 43, 0.2);
-    border-radius: 99px;
-    padding: 0.8vw 1.6vw;
+    height: 2.5vw;
+    display: inline-flex;
+    align-items: center;
+    padding: 0 1.6vw;
+    border-radius: 9vw;
     font-size: 1vw;
+    background-color: var(--white);
+    color: var(--black);
+    border: 1px solid rgba(40, 40, 43, 0.15);
+    box-shadow:
+      0 0.32vw 0.52vw #0000000a,
+      0 0.12vw 0.22vw #0000000a;
     transition:
       background 0.3s ease,
       color 0.3s ease,
@@ -104,9 +112,18 @@
     }
   }
   .filterButtonActive {
-    background: var(--black);
+    background-color: var(--black);
     color: var(--white);
     border-color: var(--black);
+  }
+  @include mobile {
+    gap: 2vw;
+    .filterButton {
+      height: 9vw;
+      padding: 0 5vw;
+      font-size: 3.4vw;
+      border-radius: 9vw;
+    }
   }
 }
 .gallery {
