@@ -171,7 +171,7 @@ function Footer() {
         <AppearTitle isFooter>
           <div className="p-x">© 2026 · {site.name}</div>
           <div className={clsx('p-x', styles.middleText)}>
-            原始网站设计：Evangelos Giatsidis
+            沈阳点面科技有限公司提供技术支持
           </div>
         </AppearTitle>
       </div>
