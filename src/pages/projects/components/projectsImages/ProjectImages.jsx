@@ -43,6 +43,13 @@ function ProjectImages({ project }) {
           </div>
         );
       }
+      if (tag === 'portrait') {
+        return (
+          <div className={styles.portraitContainer}>
+            <Image priority sizes="100%" src={src} fill alt={`Image-${title}-${index}`} />
+          </div>
+        );
+      }
       return null;
     },
     [isMobile],

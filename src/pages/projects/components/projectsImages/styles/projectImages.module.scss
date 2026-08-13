@@ -68,6 +68,21 @@
       border-radius: calc(var(--layout-columns-gap) * 0.5);
     }
   }
+  .portraitContainer {
+    grid-column: 1 / 17;
+    position: relative;
+    aspect-ratio: 1 / 1.414;
+    @include mobile {
+      grid-column: 1 / 7;
+    }
+    > img {
+      object-fit: fill;
+      @include mobile {
+        border-radius: calc(var(--layout-columns-gap) * 0.25);
+      }
+      border-radius: calc(var(--layout-columns-gap) * 0.5);
+    }
+  }
   .videoContainer {
     grid-column: 1 / 17;
     position: relative;

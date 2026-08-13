@@ -19,17 +19,17 @@ const projects = [
     images: [
       {
         src: '/lingxiaohang/cover.jpg',
-        tag: 'big',
+        tag: 'portrait',
         isRight: false,
       },
       {
         src: '/lingxiaohang/2.jpg',
-        tag: 'medium',
+        tag: 'portrait',
         isRight: false,
       },
       {
         src: '/lingxiaohang/3.jpg',
-        tag: 'medium',
+        tag: 'portrait',
         isRight: false,
       },
     ],
