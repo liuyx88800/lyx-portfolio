@@ -3,7 +3,7 @@ import Document, { Head, Html, Main, NextScript } from 'next/document';
 export default class MyDocument extends Document {
   render() {
     return (
-      <Html lang="en">
+      <Html lang="zh-CN">
         <Head>
           <link href="/fonts/NeueHaasDisplayBold.woff2" as="font" type="font/woff2" />
           <link href="/fonts/NeueHaasDisplayLight.woff2" as="font" type="font/woff2" />

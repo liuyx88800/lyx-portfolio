@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://giats.me/
+Host: https://lyx-portfolio.vercel.app/
 
 # Sitemaps
-Sitemap: https://giats.me/sitemap.xml
+Sitemap: https://lyx-portfolio.vercel.app/sitemap.xml

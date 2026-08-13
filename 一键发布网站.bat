@@ -30,5 +30,19 @@ if not errorlevel 1 (
   )
 )
 echo.
-echo 发布完成。线上网站通常需要 1 到 3 分钟自动更新。
+echo GitHub 上传完成，Vercel 正在自动更新。
+echo 正在同步发布 Netlify 国内备用地址，请耐心等待几分钟...
+where netlify >nul 2>nul
+if errorlevel 1 (
+  echo 当前电脑未安装 Netlify CLI，已跳过 Netlify；GitHub 和 Vercel 不受影响。
+) else (
+  netlify deploy --prod
+  if errorlevel 1 (
+    echo Netlify 同步失败，但 GitHub 和 Vercel 已更新。请截图本窗口以便排查。
+  ) else (
+    echo Netlify 同步完成：https://liuyx-portfolio.netlify.app
+  )
+)
+echo.
+echo 网站更新流程结束。
 pause
