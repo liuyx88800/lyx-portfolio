@@ -15,6 +15,7 @@ import Fluid from '@src/components/canvas/fluid/Fluid';
 import Layout from '@src/components/dom/Layout';
 import Lenis from 'lenis';
 import Loader from '@src/components/dom/Loader';
+import MusicButton from '@src/components/dom/MusicButton';
 import Navbar from '@src/components/dom/navbar/Index';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Scrollbar from '@src/components/dom/Scrollbar';
@@ -94,6 +95,7 @@ function MyApp({ Component, pageProps, router }) {
         </div>
         <Scrollbar />
         <Navbar />
+        <MusicButton />
         <Analytics />
       </>
     ),
@@ -119,8 +121,7 @@ function MyApp({ Component, pageProps, router }) {
   );
 
   return (
-    <>
-      <div className={styles.root}>
+    <div className={styles.root}>
         {domElements}
         <div ref={layoutRef} id="layout" className={styles.layout}>
           {canvasElements}
@@ -152,7 +153,6 @@ function MyApp({ Component, pageProps, router }) {
           </main>
         </div>
       </div>
-    </>
   );
 }
 
