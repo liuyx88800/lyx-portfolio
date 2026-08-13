@@ -9,7 +9,7 @@ const ROOT = path.resolve(__dirname, '..');
 const PROJECTS_FILE = path.join(ROOT, 'src', 'constants', 'projects.js');
 const SITE_FILE = path.join(ROOT, 'src', 'constants', 'site.json');
 const PUBLIC_DIR = path.join(ROOT, 'public');
-const PORT = 4173;
+const PORT = 4174;
 
 function readProjects() {
   const source = fs
