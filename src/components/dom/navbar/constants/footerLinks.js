@@ -1,19 +1,19 @@
 const footerLinks = [
   {
-    title: 'Github',
-    href: 'https://github.com/Giats2498',
+    title: 'GitHub',
+    href: 'https://github.com/liuyx88800',
   },
   {
-    title: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/giats',
+    title: '邮箱',
+    href: 'mailto:2661830688@qq.com',
   },
   {
-    title: 'Instagram',
-    href: 'https://www.instagram.com/giats_/',
+    title: '作品集',
+    href: '/projects',
   },
   {
-    title: 'Twitter',
-    href: 'https://twitter.com/Giats_',
+    title: '个人介绍',
+    href: '/about',
   },
 ];
 export default footerLinks;

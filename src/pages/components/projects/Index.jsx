@@ -69,7 +69,7 @@ function Projects() {
     <>
       <section className={clsx(styles.titleContainer, 'layout-grid-inner')}>
         <h1 className={clsx(styles.title, 'h1')}>
-          <AppearByWords>Selected Projects</AppearByWords>
+          <AppearByWords>精选作品</AppearByWords>
         </h1>
       </section>
       <section
@@ -144,7 +144,7 @@ function Projects() {
           ))}
         </div>
         <div className={styles.buttonContainer}>
-          <ButtonLink href="/projects" label="ALL PROJECTS" />
+          <ButtonLink href="/projects" label="查看全部作品" />
         </div>
       </section>
     </>

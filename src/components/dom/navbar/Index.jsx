@@ -9,6 +9,7 @@ import useIsMobile from '@src/hooks/useIsMobile';
 import { useRouter } from 'next/router';
 import { useShallow } from 'zustand/react/shallow';
 import { useStore } from '@src/store';
+import site from '@src/constants/site';
 
 function Navbar() {
   const isMobile = useIsMobile();
@@ -43,12 +44,14 @@ function Navbar() {
 
       <header className={styles.root} role="banner">
         <div className={styles.innerHeader}>
-          <Link onClick={goToTop} aria-label="Go home" scroll={false} href="/">
-            <h4 className={clsx('bold', 'h4')}>GIATS</h4>
+          <Link onClick={goToTop} aria-label="返回首页" scroll={false} href="/">
+            <h4 className={clsx('bold', 'h4')}>刘耀翔</h4>
           </Link>
 
           <div className={styles.rightContainer}>
-            {!isMobile && <ButtonLink href="mailto:vaggelisgiats@gmail.com" label="GET IN TOUCH" />}
+            {!isMobile && (
+              <ButtonLink href={`mailto:${site.email}`} label="联系我" />
+            )}
             <MenuButton />
           </div>
         </div>

@@ -6,7 +6,9 @@ import { useShallow } from 'zustand/react/shallow';
 import { useStore } from '@src/store';
 
 function MenuButton() {
-  const [setIsMenuOpen, lenis, isLoading] = useStore(useShallow((state) => [state.setIsMenuOpen, state.lenis, state.isLoading]));
+  const [setIsMenuOpen, lenis, isLoading] = useStore(
+    useShallow((state) => [state.setIsMenuOpen, state.lenis, state.isLoading]),
+  );
 
   const handleClick = useCallback(() => {
     if (!isLoading) {
@@ -16,8 +18,15 @@ function MenuButton() {
   }, [isLoading, setIsMenuOpen, lenis]);
 
   return (
-    <button type="button" onClick={handleClick} aria-label="Open Menu" aria-expanded={false} aria-controls="menu" className={clsx('p-xs', styles.button)}>
-      <PerspectiveText label="Menu" className={clsx('p-x', styles.label)} />
+    <button
+      type="button"
+      onClick={handleClick}
+      aria-label="打开菜单"
+      aria-expanded={false}
+      aria-controls="menu"
+      className={clsx('p-xs', styles.button)}
+    >
+      <PerspectiveText label="菜单" className={clsx('p-x', styles.label)} />
     </button>
   );
 }

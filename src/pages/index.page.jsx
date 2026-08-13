@@ -3,37 +3,19 @@ import Home from '@src/pages/components/home/Index';
 import About from '@src/pages/components/about/Index';
 import Quote from '@src/pages/components/quote/Index';
 import Projects from '@src/pages/components/projects/Index';
-import Clients from '@src/pages/components/clients/Index';
 import CustomHead from '@src/components/dom/CustomHead';
 
 const seo = {
-  title: 'Giats - Frontend Developer Portfolio',
+  title: '刘耀翔｜视觉设计与 AIGC 作品集',
   description:
-    'Self-taught front-end developer from Greece, crafting sleek and efficient web, desktop, and mobile apps. Combining creativity and technical skill to deliver innovative user-centric solutions.',
+    '刘耀翔的个人作品集，涵盖视觉设计、染织艺术、AIGC、智能工作流与数字产品。',
   keywords: [
-    'Giats',
-    'Evangelos Giatsidis',
-    'Frontend',
-    'Engineer',
-    'Portfolio',
-    'Web Development',
-    'React Developer',
-    'Developer',
-    'Web Applications',
-    'Responsive Design',
-    'Progressive Web Apps',
-    'Freelance Developer',
-    'Modern Web Development',
-    'cross-platform development',
-    'Greek',
-    'JavaScript',
-    'Typescript',
-    'Next.js',
-    'React',
-    'React Native',
-    'Electron js',
-    'HTML',
-    'CSS',
+    '刘耀翔',
+    '鲁迅美术学院',
+    '视觉设计',
+    '染织艺术设计',
+    'AIGC',
+    '作品集',
   ],
 };
 
@@ -43,7 +25,6 @@ function Page() {
       <CustomHead {...seo} />
       <Home />
       <About />
-      <Clients />
       <Quote />
       <Projects />
     </>

@@ -7,6 +7,7 @@ import styles from '@src/pages/components/about/styles/about.module.scss';
 import useIsMobile from '@src/hooks/useIsMobile';
 import { useIsomorphicLayoutEffect } from '@src/hooks/useIsomorphicLayoutEffect';
 import { useRef } from 'react';
+import site from '@src/constants/site';
 
 function About() {
   const isMobile = useIsMobile();
@@ -42,7 +43,7 @@ function About() {
 
   const renderImageContainer = () => (
     <div className={styles.imageContainer}>
-      <Image priority src="/giats/front.webp" sizes="100%" fill alt="Evangelos Giatsidis" />
+      <Image priority src="/giats/front.webp" sizes="100%" fill alt="刘耀翔" />
     </div>
   );
 
@@ -50,8 +51,8 @@ function About() {
     <section ref={rootRef} className={styles.root}>
       <div className={clsx(styles.nameContainer, 'layout-block-inner')}>
         <AppearTitle>
-          <h1 className={clsx('h1', 'medium')}>Hey, My name&apos;s</h1>
-          <h1 className={clsx('h1', 'medium')}>Evangelos Giatsidis!</h1>
+          <h1 className={clsx('h1', 'medium')}>你好，我是</h1>
+          <h1 className={clsx('h1', 'medium')}>{site.name}</h1>
         </AppearTitle>
       </div>
 
@@ -59,32 +60,24 @@ function About() {
         {isMobile ? renderImageContainer() : null}
         <div className={clsx(styles.descWrapper)} ref={animatedImageRef}>
           <AppearTitle>
-            <div className="p-l">“My solo learning journey as a self-taught</div>
-            <div className="p-l">developer empowers me to solve problems</div>
-            <div className="p-l">creatively and efficiently, supporting the</div>
-            <div className="p-l">successful completion of your project goals”</div>
+            <div className="p-l">鲁迅美术学院染织艺术设计专业学生</div>
+            <div className="p-l">点面科技创始人、DIANM视觉设计工作室队长</div>
+            <div className="p-l">以设计为起点，探索 AIGC 与数字产品</div>
           </AppearTitle>
         </div>
         {!isMobile ? renderImageContainer() : null}
         <div className={clsx(styles.descWrapperBottom)}>
           {!isMobile ? (
             <AppearTitle key="desktop-descWrapperBottom">
-              <h6 className="h6">A passionate front-end developer hailing from Greece.</h6>
-              <h6 className="h6">With a strong eye for design and a dedication to</h6>
-              <h6 className="h6">creating seamless user experiences. I specialize in</h6>
-              <h6 className="h6">bringing web applications to life with clean and efficient</h6>
-              <h6 className="h6">code.</h6>
+              <h6 className="h6">{site.intro}</h6>
             </AppearTitle>
           ) : (
             <AppearTitle key="mobile-descWrapperBottom">
-              <h6 className="h6"> A passionate front-end developer hailing from Greece. With a</h6>
-              <h6 className="h6">strong eye for design and a dedication to creating seamless</h6>
-              <h6 className="h6">user experiences. I specialize in bringing web applications to life</h6>
-              <h6 className="h6">with clean and efficient code.</h6>
+              <h6 className="h6">{site.intro}</h6>
             </AppearTitle>
           )}
           <div className={clsx(styles.buttonContainer)}>
-            <ButtonLink href="/about" label="ABOUT ME" />
+            <ButtonLink href="/about" label="查看详细介绍" />
           </div>
         </div>
       </div>

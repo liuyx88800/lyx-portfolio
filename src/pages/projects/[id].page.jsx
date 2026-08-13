@@ -20,10 +20,15 @@ function Page({ id }) {
   const isMobile = useIsMobile();
   const rightContainerRef = useRef();
   const leftContainerRef = useRef();
-  const [isLoading, setFluidColor] = useStore(useShallow((state) => [state.isLoading, state.setFluidColor]));
+  const [isLoading, setFluidColor] = useStore(
+    useShallow((state) => [state.isLoading, state.setFluidColor]),
+  );
   const windowSize = useWindowSize();
 
-  const projectIndex = useMemo(() => projects.findIndex((project) => project.id === id), [id]);
+  const projectIndex = useMemo(
+    () => projects.findIndex((project) => project.id === id),
+    [id],
+  );
   const currentProject = useMemo(() => projects[projectIndex], [projectIndex]);
 
   const updateCSSVariables = (project) => {
@@ -80,17 +85,14 @@ function Page({ id }) {
 
   const seo = useMemo(
     () => ({
-      title: `Giats - ${currentProject.title} Project`,
-      description: `Check out my work on the ${currentProject.title} project, collaborating with ${currentProject.company}, where I enhanced frontend development with responsive design and optimized user interactions.`,
+      title: `刘耀翔｜${currentProject.title}`,
+      description: `${currentProject.title}，刘耀翔个人作品集项目。${currentProject.desc[0] || ''}`,
       keywords: [
-        `${currentProject.title} project`,
-        `${currentProject.title} development`,
-        `${currentProject.company} collaboration`,
-        `Evangelos Giatsidis ${currentProject.title}`,
-        `Giats ${currentProject.title}`,
-        `Frontend development ${currentProject.title}`,
-        `Responsive design ${currentProject.title}`,
-        `User interactions ${currentProject.title}`,
+        currentProject.title,
+        currentProject.company,
+        `刘耀翔 ${currentProject.title}`,
+        '视觉设计作品',
+        'AIGC作品集',
       ],
     }),
     [currentProject],
@@ -107,7 +109,13 @@ function Page({ id }) {
           <ProjectImages project={currentProject} />
         </div>
       </section>
-      <NextProject nextProject={projectIndex === projects.length - 1 ? projects[0] : projects[projectIndex + 1]} />
+      <NextProject
+        nextProject={
+          projectIndex === projects.length - 1
+            ? projects[0]
+            : projects[projectIndex + 1]
+        }
+      />
     </>
   );
 }

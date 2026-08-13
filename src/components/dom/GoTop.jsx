@@ -59,7 +59,15 @@ function GoTop() {
   }, []);
 
   return (
-    <button type="button" ref={buttonRef} aria-label="Go top" onClick={scrollToTop} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className={styles.circleButton}>
+    <button
+      type="button"
+      ref={buttonRef}
+      aria-label="返回顶部"
+      onClick={scrollToTop}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      className={styles.circleButton}
+    >
       <Arrow className={styles.arrowClassic} />
       <span className={styles.ball} ref={spanRef} />
     </button>

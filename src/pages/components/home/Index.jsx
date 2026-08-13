@@ -1,4 +1,5 @@
 import { useCallback, useMemo, useRef, useState } from 'react';
+/* eslint-disable no-return-assign */
 
 import FloatingMeshes from '@src/pages/components/home/components/floatingMeshes/Index';
 import InfiniteText from '@src/components/animationComponents/infiniteText/Index';
@@ -26,9 +27,11 @@ const moveRect = (rect, direction, gridWidth, gridHeight) => {
   moveMap[direction]?.();
 };
 
-const arePositionsEqual = (pos1, pos2) => pos1.x === pos2.x && pos1.y === pos2.y;
+const arePositionsEqual = (pos1, pos2) =>
+  pos1.x === pos2.x && pos1.y === pos2.y;
 
-const isPositionOccupied = (rects, pos) => rects.some((rect) => arePositionsEqual(rect, pos));
+const isPositionOccupied = (rects, pos) =>
+  rects.some((rect) => arePositionsEqual(rect, pos));
 
 const performMoves = (rectangles, gridWidth, gridHeight) => {
   const totalGroups = Math.floor(Math.random() * 8) + 1;
@@ -39,7 +42,12 @@ const performMoves = (rectangles, gridWidth, gridHeight) => {
     const togetherMoves = Math.floor(Math.random() * 3) + 1;
 
     for (let k = 0; k < togetherMoves; k += 1) {
-      const randomRectIndex = k === 0 || validMoves.length === 0 ? Math.floor(Math.random() * rectangles.length) : rectangles.findIndex((_, idx) => !validMoves.some((move) => move.index === idx));
+      const randomRectIndex =
+        k === 0 || validMoves.length === 0
+          ? Math.floor(Math.random() * rectangles.length)
+          : rectangles.findIndex(
+              (_, idx) => !validMoves.some((move) => move.index === idx),
+            );
 
       if (randomRectIndex === -1) break;
 
@@ -53,10 +61,23 @@ const performMoves = (rectangles, gridWidth, gridHeight) => {
         moveRect(rect, direction, gridWidth, gridHeight);
         const newPosition = { ...rect };
 
-        const { x, y } = { x: parseFloat(newPosition.x), y: parseFloat(newPosition.y) };
-        if (x > -0.5 && x < 90 && y > -0.5 && y < 90 && !isPositionOccupied(rectangles, newPosition)) {
+        const { x, y } = {
+          x: parseFloat(newPosition.x),
+          y: parseFloat(newPosition.y),
+        };
+        if (
+          x > -0.5 &&
+          x < 90 &&
+          y > -0.5 &&
+          y < 90 &&
+          !isPositionOccupied(rectangles, newPosition)
+        ) {
           validMove = true;
-          validMoves.push({ index: newPosition.index, x: newPosition.x, y: newPosition.y });
+          validMoves.push({
+            index: newPosition.index,
+            x: newPosition.x,
+            y: newPosition.y,
+          });
           Object.assign(rectangles[newPosition.index], newPosition);
         } else {
           Object.assign(rect, originalPosition);
@@ -116,7 +137,11 @@ function Home() {
     (movements) => {
       const tl = gsap.timeline({
         onComplete: () => {
-          const newMovements = performMoves(initialPositions, gridWidth, gridHeight);
+          const newMovements = performMoves(
+            initialPositions,
+            gridWidth,
+            gridHeight,
+          );
           setTimeline(animateRectangles(newMovements));
         },
       });
@@ -171,7 +196,9 @@ function Home() {
         timeline.kill();
       }
 
-      const newTimeline = animateRectangles(performMoves(initialPositions, gridWidth, gridHeight));
+      const newTimeline = animateRectangles(
+        performMoves(initialPositions, gridWidth, gridHeight),
+      );
       setTimeline(newTimeline);
     });
 
@@ -217,7 +244,17 @@ function Home() {
 
   const renderRects = useMemo(
     // eslint-disable-next-line no-return-assign
-    () => initialPositions.map(({ index, x, y }) => <rect key={index} ref={(ref) => (rectRefs.current[index] = ref)} x={x} y={y} width={`${gridWidth}%`} height={`${gridHeight}%`} />),
+    () =>
+      initialPositions.map(({ index, x, y }) => (
+        <rect
+          key={index}
+          ref={(ref) => (rectRefs.current[index] = ref)}
+          x={x}
+          y={y}
+          width={`${gridWidth}%`}
+          height={`${gridHeight}%`}
+        />
+      )),
     [initialPositions, gridWidth, gridHeight],
   );
 
@@ -225,23 +262,45 @@ function Home() {
     <section ref={rootRef} className={clsx(styles.root)}>
       <div className={clsx(styles.topContainer, 'layout-grid-inner')}>
         <div className={styles.leftContainer}>
-          <h2 className="h2">Remarkable</h2>
-          <h2 className={clsx('h2', 'bold')}>Virtual Experiences</h2>
+          <h2 className="h2">刘耀翔</h2>
+          <h2 className={clsx('h2', 'bold')}>视觉设计与 AIGC 创作</h2>
         </div>
         {!isMobile && (
           <h6 className={clsx('h6', styles.rightContainer)}>
-            With years of experience, I create immersive digital environments that elevate your virtual presence. Join me in redefining digital interaction.
+            从染织艺术、视觉设计到智能工作流，探索创意与技术之间的新表达。
           </h6>
         )}
       </div>
 
       <div className={styles.bottomContainer}>
         <FloatingMeshes />
-        <div onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} className={styles.svgWrapper}>
-          <svg ref={svgRef} width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <rect x="0" y="0" className={styles.mask2} width="100%" height="100.3%" />
+        <div
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
+          className={styles.svgWrapper}
+        >
+          <svg
+            ref={svgRef}
+            width="100%"
+            height="100%"
+            viewBox="0 0 100 100"
+            preserveAspectRatio="none"
+          >
+            <rect
+              x="0"
+              y="0"
+              className={styles.mask2}
+              width="100%"
+              height="100.3%"
+            />
             <mask id="mask" x="0" y="0">
-              <rect className={styles.mask1} x="0" y="0" width="100%" height="100.3%" />
+              <rect
+                className={styles.mask1}
+                x="0"
+                y="0"
+                width="100%"
+                height="100.3%"
+              />
               {renderRects}
             </mask>
           </svg>
@@ -250,12 +309,14 @@ function Home() {
       </div>
       {isMobile && (
         <div className={styles.rightContainerMobile}>
-          <h6 className="h6"> With years of experience, I create immersive digital environments that elevate your virtual presence. Join me in redefining digital interaction.</h6>
+          <h6 className="h6">
+            从染织艺术、视觉设计到智能工作流，探索创意与技术之间的新表达。
+          </h6>
         </div>
       )}
 
       <div ref={infiniteTextRef} className={styles.infiniteContainer}>
-        <InfiniteText text="Scroll Down" length={5} />
+        <InfiniteText text="向下探索" length={5} />
       </div>
     </section>
   );

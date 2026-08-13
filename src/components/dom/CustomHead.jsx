@@ -1,25 +1,21 @@
 import NextHead from 'next/head';
 import { NextSeo } from 'next-seo';
 import PropTypes from 'prop-types';
+import site from '@src/constants/site';
 
-const SITE_URL = 'https://giats.me';
+const SITE_URL = 'https://lyx-portfolio.vercel.app';
 const OG_IMAGE = `${SITE_URL}/og.png`;
 
 const getSchema = () => ({
   '@context': 'http://schema.org',
   '@type': 'Person',
-  name: 'Evangelos (Giats) Giatsidis',
-  jobTitle: 'Senior Frontend Developer',
+  name: site.name,
+  jobTitle: site.title,
   url: SITE_URL,
   image: OG_IMAGE,
-  email: 'mailto:vaggelisgiats@gmail.com',
-  sameAs: ['https://www.linkedin.com/in/giats/', 'https://github.com/Giats2498', 'https://twitter.com/Giats_', 'https://www.instagram.com/giats_/'],
-  alumniOf: [
-    { '@type': 'Organization', name: 'Company 1' },
-    { '@type': 'Organization', name: 'Company 2' },
-    { '@type': 'Organization', name: 'Company 3' },
-    { '@type': 'Organization', name: 'Company 4' },
-  ],
+  email: `mailto:${site.email}`,
+  sameAs: [site.github],
+  alumniOf: [{ '@type': 'CollegeOrUniversity', name: site.school }],
 });
 
 function CustomHead({ title = '', description, keywords }) {
@@ -29,13 +25,26 @@ function CustomHead({ title = '', description, keywords }) {
         {/* General Meta Tags */}
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
         <meta httpEquiv="x-dns-prefetch-control" content="off" />
-        <meta name="robots" content={process.env.NODE_ENV !== 'development' ? 'index,follow' : 'noindex,nofollow'} />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <meta name="keywords" content={keywords && keywords.length ? keywords.join(',') : keywords} />
-        <meta name="author" content="Evangelos (Giats) Giatsidis" />
+        <meta
+          name="robots"
+          content={
+            process.env.NODE_ENV !== 'development'
+              ? 'index,follow'
+              : 'noindex,nofollow'
+          }
+        />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        />
+        <meta
+          name="keywords"
+          content={keywords && keywords.length ? keywords.join(',') : keywords}
+        />
+        <meta name="author" content={site.name} />
         <meta name="referrer" content="no-referrer" />
         <meta name="format-detection" content="telephone=no" />
-        <meta name="geo.region" content="US" />
+        <meta name="geo.region" content="CN-LN" />
 
         {/* Canonical and Title */}
         <link rel="canonical" href={SITE_URL} />
@@ -55,9 +64,23 @@ function CustomHead({ title = '', description, keywords }) {
 
         {/* Favicons */}
         <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#333333" />
         <meta name="msapplication-TileColor" content="#f0f4f1" />
@@ -65,7 +88,10 @@ function CustomHead({ title = '', description, keywords }) {
 
         {/* Schema */}
         {/* eslint-disable-next-line react/no-danger */}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(getSchema()) }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(getSchema()) }}
+        />
       </NextHead>
       <NextSeo title={title} description={description} />
     </>

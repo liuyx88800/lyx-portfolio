@@ -21,13 +21,9 @@ module.exports = {
     'object-curly-newline': 'off',
     'react/no-unknown-property': 'off',
     'react/display-name': 'off',
-    'prettier/prettier': [
-      'error',
-      {
-        endOfLine: 'auto',
-        printWidth: 200,
-      },
-    ],
+    // Prettier 3 and the legacy ESLint plugin disagree on JSX wrapping.
+    // Formatting is handled by `npx prettier --write`; lint remains focused on code correctness.
+    'prettier/prettier': 'off',
     'no-param-reassign': 'off',
     // A temporary hack related to IDE not resolving correct package.json
     'import/no-extraneous-dependencies': 'off',

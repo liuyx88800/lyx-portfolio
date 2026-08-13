@@ -36,32 +36,15 @@ const nextConfig = {
     {
       source: '/(.*)',
       headers: [
-        {
-          key: 'X-Content-Type-Options',
-          value: 'nosniff',
-        },
-        {
-          key: 'X-Frame-Options',
-          value: 'SAMEORIGIN',
-        },
-        {
-          key: 'X-XSS-Protection',
-          value: '1; mode=block',
-        },
+        { key: 'X-Content-Type-Options', value: 'nosniff' },
+        { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+        { key: 'X-XSS-Protection', value: '1; mode=block' },
       ],
     },
   ],
   redirects: async () => [
-    {
-      source: '/home',
-      destination: '/',
-      permanent: true,
-    },
-    {
-      source: '/404',
-      destination: '/',
-      permanent: true,
-    },
+    { source: '/home', destination: '/', permanent: true },
+    { source: '/404', destination: '/', permanent: true },
   ],
 };
 
