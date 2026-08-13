@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "manage": "node scripts/portfolio-manager.js",
     "build": "next build",
     "start": "next start",
     "postbuild": "next-sitemap",

@@ -1,15 +1,13 @@
-const projectsLinks = [
-  {
-    title: 'Project 3',
-    href: '/projects/project3',
-  },
-  {
-    title: 'Project 4',
-    href: '/projects/project4',
-  },
-  {
-    title: 'Project 2',
-    href: '/projects/project2',
-  },
-];
+/* eslint-disable prettier/prettier */
+import projects from '@src/constants/projects';
+
+const featuredProjects = projects
+  .filter((project) => project.featured)
+  .slice(0, 3);
+const projectsLinks = (
+  featuredProjects.length ? featuredProjects : projects.slice(0, 3)
+).map((project) => ({
+  title: project.title,
+  href: project.link,
+}));
 export default projectsLinks;
