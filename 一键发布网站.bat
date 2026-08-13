@@ -1,48 +1,47 @@
 @echo off
-chcp 65001 >nul
 cd /d "%~dp0"
-echo æ­£åœ¨æ£€æŸ¥ç½‘ç«™æ›´æ–°...
+echo ÕıÔÚ¼ì²éÍøÕ¾¸üĞÂ...
 for /f "delims=" %%R in ('git remote get-url origin 2^>nul') do set "LYX_REMOTE=%%R"
 echo %LYX_REMOTE% | findstr /i "Giats2498/giats-portfolio" >nul
 if not errorlevel 1 (
   echo.
-  echo å°šæœªè¿æ¥åˆ°ä½ è‡ªå·±çš„ GitHub ä»“åº“ï¼Œä¸ºé˜²æ­¢è¯¯æ“ä½œï¼Œæœ¬æ¬¡æ²¡æœ‰å‘å¸ƒã€‚
-  echo è¯·å…ˆæŒ‰â€œæ–°æ‰‹ä½¿ç”¨è¯´æ˜.mdâ€å®Œæˆç¬¬ä¸€æ¬¡ä¸Šçº¿ã€‚
+  echo ÉĞÎ´Á¬½Óµ½×Ô¼ºµÄ GitHub ²Ö¿â£¬Îª·ÀÖ¹Îó²Ù×÷£¬±¾´ÎÃ»ÓĞ·¢²¼¡£
+  echo ÇëÏÈ°´"ĞÂÊÖÊ¹ÓÃËµÃ÷.md"Íê³ÉµÚÒ»´ÎÉÏÏß¡£
   pause
   exit /b 1
 )
 git add -A
 git diff --cached --quiet
 if not errorlevel 1 (
-  echo æ²¡æœ‰å‘ç°éœ€è¦å‘å¸ƒçš„ä¿®æ”¹ã€‚
+  echo Ã»ÓĞ·¢ÏÖĞèÒª·¢²¼µÄĞŞ¸Ä¡£
 ) else (
-  git commit -m "æ›´æ–°ç½‘ç«™å†…å®¹"
+  git commit -m "¸üĞÂÍøÕ¾ÄÚÈİ"
   if errorlevel 1 (
-    echo æäº¤å¤±è´¥ï¼Œè¯·æŠŠçª—å£ä¸­çš„é”™è¯¯ä¿¡æ¯æˆªå›¾å‘ç»™ç»´æŠ¤äººå‘˜ã€‚
+    echo Ìá½»Ê§°Ü£¬Çë°Ñ´°¿ÚÖĞµÄ´íÎóĞÅÏ¢½ØÍ¼·¢¸øÎ¬»¤ÈËÔ±¡£
     pause
     exit /b 1
   )
   git push
   if errorlevel 1 (
-    echo ä¸Šä¼ å¤±è´¥ï¼Œè¯·æ£€æŸ¥ç½‘ç»œæˆ– GitHub ç™»å½•çŠ¶æ€åé‡è¯•ã€‚
+    echo ÉÏ´«Ê§°Ü£¬Çë¼ì²éÍøÂç»ò GitHub µÇÂ¼×´Ì¬ºóÖØÊÔ¡£
     pause
     exit /b 1
   )
 )
 echo.
-echo GitHub ä¸Šä¼ å®Œæˆï¼ŒVercel æ­£åœ¨è‡ªåŠ¨æ›´æ–°ã€‚
-echo æ­£åœ¨åŒæ­¥å‘å¸ƒ Netlify å›½å†…å¤‡ç”¨åœ°å€ï¼Œè¯·è€å¿ƒç­‰å¾…å‡ åˆ†é’Ÿ...
+echo GitHub ÉÏ´«Íê³É£¬Vercel ÕıÔÚ×Ô¶¯¸üĞÂ¡£
+echo ÕıÔÚÍ¬²½·¢²¼ Netlify ¹úÄÚ±¸ÓÃµØÖ·£¬ÇëÄÍĞÄµÈ´ı¼¸·ÖÖÓ...
 where netlify >nul 2>nul
 if errorlevel 1 (
-  echo å½“å‰ç”µè„‘æœªå®‰è£… Netlify CLIï¼Œå·²è·³è¿‡ Netlifyï¼›GitHub å’Œ Vercel ä¸å—å½±å“ã€‚
+  echo µ±Ç°µçÄÔÎ´°²×° Netlify CLI£¬ÒÑÌø¹ı Netlify£»GitHub ºÍ Vercel ²»ÊÜÓ°Ïì¡£
 ) else (
   netlify deploy --prod
   if errorlevel 1 (
-    echo Netlify åŒæ­¥å¤±è´¥ï¼Œä½† GitHub å’Œ Vercel å·²æ›´æ–°ã€‚è¯·æˆªå›¾æœ¬çª—å£ä»¥ä¾¿æ’æŸ¥ã€‚
+    echo Netlify Í¬²½Ê§°Ü£¬µ« GitHub ºÍ Vercel ÒÑ¸üĞÂ¡£Çë½ØÍ¼±¾´°¿ÚÒÔ±ãÅÅ²é¡£
   ) else (
-    echo Netlify åŒæ­¥å®Œæˆï¼šhttps://liuyx-portfolio.netlify.app
+    echo Netlify Í¬²½Íê³É£ºhttps://liuyx-portfolio.netlify.app
   )
 )
 echo.
-echo ç½‘ç«™æ›´æ–°æµç¨‹ç»“æŸã€‚
+echo ÍøÕ¾¸üĞÂÁ÷³Ì½áÊø¡£
 pause

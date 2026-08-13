@@ -8,6 +8,7 @@ import Link from 'next/link';
 import clsx from 'clsx';
 import { gsap } from 'gsap';
 import projects from '@src/constants/projects';
+import series from '@src/constants/series';
 import styles from '@src/pages/components/projects/styles/projects.module.scss';
 import useIsMobile from '@src/hooks/useIsMobile';
 import { useIsomorphicLayoutEffect } from '@src/hooks/useIsomorphicLayoutEffect';
@@ -24,11 +25,20 @@ function Projects() {
   const rootRef = useRef();
   const projectRefs = useRef([]);
 
-  const newProjects = projects
-    .filter((project) => project.featured)
-    .slice(0, 3);
-  const displayedProjects = newProjects.length
-    ? newProjects
+  const coverProjects = series
+    .map((item) => {
+      const cover = projects.find(
+        (project) =>
+          project.series === item.id && project.seriesCover === true,
+      );
+      return cover
+        ? { ...cover, seriesId: item.id, seriesName: item.name }
+        : null;
+    })
+    .filter(Boolean)
+    .slice(0, 4);
+  const displayedProjects = coverProjects.length
+    ? coverProjects
     : projects.slice(0, 3);
 
   const setupProjectAnimations = () => {
@@ -69,7 +79,7 @@ function Projects() {
     <>
       <section className={clsx(styles.titleContainer, 'layout-grid-inner')}>
         <h1 className={clsx(styles.title, 'h1')}>
-          <AppearByWords>精选作品</AppearByWords>
+          <AppearByWords>系列作品</AppearByWords>
         </h1>
       </section>
       <section
@@ -79,11 +89,11 @@ function Projects() {
         <div className={styles.innerContainer}>
           {displayedProjects.map((project, index) => (
             <Link
-              aria-label={`Go ${project.title}`}
+              aria-label={`Go ${project.seriesName}`}
               id={project.id}
               key={project.id}
               scroll={false}
-              href={project.link}
+              href={`/projects?series=${project.seriesId}`}
               className={clsx(styles.card)}
             >
               <div
@@ -108,7 +118,7 @@ function Projects() {
               >
                 <div className={clsx(styles.container, 'layout-grid-inner')}>
                   <div className={styles.projectsDetails}>
-                    <h6 className="h6">{project.date}</h6>
+                    <h6 className="h6">{project.seriesName}</h6>
                     <h3 className="h3">{project.title}</h3>
                   </div>
                   <div className={styles.imageContainer}>

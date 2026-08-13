@@ -1,10 +1,9 @@
 @echo off
-chcp 65001 >nul
 cd /d "%~dp0"
 if not exist node_modules call npm install
-echo æ­£åœ¨å¯åŠ¨æœ¬åœ°é¢„è§ˆï¼šhttp://localhost:3010
-echo è¯·ä¸è¦å…³é—­è¿™ä¸ªé»‘è‰²çª—å£ã€‚å…³é—­çª—å£å³å…³é—­é¢„è§ˆç½‘ç«™ã€‚
-rem ç­‰å¾… Next.js å¯åŠ¨å®Œæˆåå†æ‰“å¼€æµè§ˆå™¨ï¼Œé¿å…å‡ºç°â€œInternal Server Errorâ€ã€‚
+echo ÕıÔÚÆô¶¯±¾µØÔ¤ÀÀ£ºhttp://localhost:3010
+echo Çë²»Òª¹Ø±ÕÕâ¸öºÚÉ«´°¿Ú¡£¹Ø±Õ´°¿Ú¼´¹Ø±ÕÔ¤ÀÀÍøÕ¾¡£
+rem µÈ´ı Next.js Æô¶¯Íê³ÉºóÔÙ´ò¿ªä¯ÀÀÆ÷£¬±ÜÃâ³öÏÖ"Internal Server Error"¡£
 start "" powershell -NoProfile -WindowStyle Hidden -Command "Start-Sleep -Seconds 4; Start-Process 'http://localhost:3010'"
 npm run dev -- -p 3010
 pause

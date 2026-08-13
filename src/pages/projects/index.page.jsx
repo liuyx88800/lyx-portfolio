@@ -2,8 +2,10 @@
 import CustomHead from '@src/components/dom/CustomHead';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import clsx from 'clsx';
 import projects from '@src/constants/projects';
+import series from '@src/constants/series';
 import styles from '@src/pages/projects/gallery.module.scss';
 
 const seo = {
@@ -13,16 +15,49 @@ const seo = {
 };
 
 function Page() {
+  const router = useRouter();
+  const activeSeries = router.query.series || 'all';
+
+  const filteredProjects =
+    activeSeries === 'all'
+      ? projects
+      : projects.filter((project) => project.series === activeSeries);
+
   return (
     <>
       <CustomHead {...seo} />
       <section className={clsx(styles.heading, 'layout-block-inner')}>
         <p>持续更新</p>
         <h1>全部作品</h1>
-        <span>共 {projects.length} 件</span>
+        <span>共 {filteredProjects.length} 件</span>
+      </section>
+      <section className={clsx(styles.filter, 'layout-block-inner')}>
+        <Link
+          scroll={false}
+          href="/projects"
+          className={clsx(
+            styles.filterButton,
+            activeSeries === 'all' && styles.filterButtonActive,
+          )}
+        >
+          全部
+        </Link>
+        {series.map((item) => (
+          <Link
+            scroll={false}
+            key={item.id}
+            href={`/projects?series=${item.id}`}
+            className={clsx(
+              styles.filterButton,
+              activeSeries === item.id && styles.filterButtonActive,
+            )}
+          >
+            {item.name}
+          </Link>
+        ))}
       </section>
       <section className={clsx(styles.gallery, 'layout-block-inner')}>
-        {projects.map((project, index) => (
+        {filteredProjects.map((project, index) => (
           <Link
             aria-label={`查看作品：${project.title}`}
             key={project.id}

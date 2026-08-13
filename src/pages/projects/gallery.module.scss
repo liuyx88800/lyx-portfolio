@@ -1,5 +1,6 @@
 @import '@src/styles/functions';
 .heading,
+.filter,
 .gallery {
   background: var(--white);
   color: var(--black);
@@ -84,7 +85,31 @@
       font-size: 3.5vw;
     }
   }
-  .gallery {
+.filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8vw;
+  padding-bottom: 4vw;
+  .filterButton {
+    border: 1px solid rgba(40, 40, 43, 0.2);
+    border-radius: 99px;
+    padding: 0.8vw 1.6vw;
+    font-size: 1vw;
+    transition:
+      background 0.3s ease,
+      color 0.3s ease,
+      border-color 0.3s ease;
+    &:hover {
+      border-color: var(--black);
+    }
+  }
+  .filterButtonActive {
+    background: var(--black);
+    color: var(--white);
+    border-color: var(--black);
+  }
+}
+.gallery {
     grid-template-columns: 1fr;
     gap: 14vw;
     padding-bottom: 20vw;
